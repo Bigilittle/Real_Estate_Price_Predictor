@@ -2,12 +2,14 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import json
 import joblib  
+import dill
+
 
 app = Flask(__name__)
 
 
-pipeline = joblib.load('../model/pipeline.pkl') 
-model = joblib.load('../model/model.pkl')  
+pipeline = dill.load('../model/pipeline.pkl') 
+model = dill.load('../model/model.pkl')  
 
 @app.route('/add', methods=['POST'])
 def add():
